@@ -57,7 +57,7 @@ namespace GameOffsets
         [FieldOffset(0x7B38 - Skip)] public long AwakenedAreas;
         [FieldOffset(0x85EC - Skip)] public byte MonsterLevel;
         [FieldOffset(0x85ED - Skip)] public byte MonstersRemaining;
-        [FieldOffset(0x86A0 - Skip)] public ushort CurrentSulphiteAmount;
-        [FieldOffset(0x8690 - Skip)] public int CurrentAzuriteAmount;
+        [FieldOffset(0x86A0 - Skip)] public ushort CurrentSulphiteAmount; //Maybe wrong not tested
+        [FieldOffset(0x86A4 - Skip)] public int CurrentAzuriteAmount;
     }
 }
