@@ -209,6 +209,7 @@
     <Compile Include="PoEMemory\Components\Render.cs" />
     <Compile Include="PoEMemory\Components\RenderItem.cs" />
     <Compile Include="PoEMemory\Components\Sector.cs" />
+    <Compile Include="PoEMemory\Components\Shield.cs" />
     <Compile Include="PoEMemory\Components\Shrine.cs" />
     <Compile Include="PoEMemory\Components\SkillGem.cs" />
     <Compile Include="PoEMemory\Components\Sockets.cs" />
