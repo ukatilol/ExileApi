@@ -29,9 +29,13 @@ namespace ExileCore.PoEMemory.MemoryObjects
         }
 
         public IngameUElementsOffsets IngameUIElementsStruct => _cachedValue.Value;
-        public Element GameUI => _gameUI ?? (_gameUI = GetObject<Element>(IngameUIElementsStruct.GameUI));
+        public GameUi GameUI => GetObject<GameUi>(IngameUIElementsStruct.GameUI);
         public SellWindow SellWindow => GetObject<SellWindow>(IngameUIElementsStruct.SellWindow);
-        public Element PurchaseWindow => _purchaseWindow ?? (_purchaseWindow = GetObject<Element>(IngameUIElementsStruct.PurchaseWindow));
+        public MapDeviceWindow MapDeviceWindow => GetObject<MapDeviceWindow>(IngameUIElementsStruct.MapDeviceWindow);
+        public TradeWindow TradeWindow => GetObject<TradeWindow>(IngameUIElementsStruct.TradeWindow);
+        public NpcDialog NpcDialog => GetObject<NpcDialog>(IngameUIElementsStruct.NpcDialog);
+        public BanditDialog BanditDialog => GetObject<BanditDialog>(IngameUIElementsStruct.BanditDialog);
+        public Element PurchaseWindow => GetObject<Element>(IngameUIElementsStruct.PurchaseWindow);
         public SubterraneanChart DelveWindow =>
             _DelveWindow ?? (_DelveWindow = GetObject<SubterraneanChart>(IngameUIElementsStruct.DelveWindow));
         public SkillBarElement SkillBar => GetObject<SkillBarElement>(IngameUIElementsStruct.SkillBar);
@@ -39,6 +43,7 @@ namespace ExileCore.PoEMemory.MemoryObjects
         public PoeChatElement ChatBox => GetObject<PoeChatElement>(M.Read<long>(Address + 0x400, 0x2F0, 0x350));
         public IList<string> ChatMessages => ChatBox.Children.Select(x => x.Text).ToList();
         public Element QuestTracker => GetObject<Element>(IngameUIElementsStruct.QuestTracker);
+        public QuestRewardWindow QuestRewardWindow => GetObject<QuestRewardWindow>(IngameUIElementsStruct.QuestRewardWindow);
         public Element OpenLeftPanel => GetObject<Element>(IngameUIElementsStruct.OpenLeftPanel);
         public Element OpenRightPanel => GetObject<Element>(IngameUIElementsStruct.OpenRightPanel);
         public StashElement StashElement => GetObject<StashElement>(IngameUIElementsStruct.StashElement);
@@ -51,7 +56,7 @@ namespace ExileCore.PoEMemory.MemoryObjects
         public ItemsOnGroundLabelElement ItemsOnGroundLabelElement =>
             GetObject<ItemsOnGroundLabelElement>(IngameUIElementsStruct.itemsOnGroundLabelRoot);
         public IList<LabelOnGround> ItemsOnGroundLabels => ItemsOnGroundLabelElement.LabelsOnGround;
-        public Element GemLvlUpPanel => GetObject<Element>(IngameUIElementsStruct.GemLvlUpPanel);
+        public GemLvlUpPanel GemLvlUpPanel => GetObject<GemLvlUpPanel>(IngameUIElementsStruct.GemLvlUpPanel);
         public Element InvitesPanel => GetObject<Element>(IngameUIElementsStruct.InvitesPanel);
         public ItemOnGroundTooltip ItemOnGroundTooltip => GetObject<ItemOnGroundTooltip>(IngameUIElementsStruct.ItemOnGroundTooltip);
         public MapStashTabElement MapStashTab => ReadObject<MapStashTabElement>(IngameUIElementsStruct.MapTabWindowStartPtr + 0xAA0);
@@ -73,6 +78,7 @@ namespace ExileCore.PoEMemory.MemoryObjects
         public WorldMapElement WorldMap => GetObject<WorldMapElement>(IngameUIElementsStruct.WorldMap);
         public MetamorphWindowElement MetamorphWindow => GetObject<MetamorphWindowElement>(IngameUIElementsStruct.MetamorphWindow);
         public SyndicatePanel SyndicatePanel => TheGame.IngameState.UIRoot.GetChildFromIndices(1, 67).AsObject<SyndicatePanel>();
+        public InstanceManagerPanel InstanceManagerPanel => TheGame.IngameState.UIRoot.GetChildFromIndices(1, 125).AsObject<InstanceManagerPanel>();
 
         public IList<Tuple<Quest, int>> GetUncompletedQuests
         {
