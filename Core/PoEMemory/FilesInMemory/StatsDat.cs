@@ -40,12 +40,12 @@ namespace ExileCore.PoEMemory.FilesInMemory
                 Address = addr;
 
                 Key = RemoteMemoryObject.Cache.StringCache.Read($"{nameof(StatsDat)}{addr + 0}",
-                    () => m.ReadStringU(m.Read<long>(addr + 0), 255));
-
-				Flag0 = m.Read<byte>(addr + 0x8) != 0;
-				IsLocal = m.Read<byte>(addr + 0x9) != 0;
+                    () => m.ReadStringU(m.Read<long>(addr + 0), 255));
+
+				Flag0 = m.Read<byte>(addr + 0x8) != 0;
+				IsLocal = m.Read<byte>(addr + 0x9) != 0;
 				IsWeaponLocal = m.Read<byte>(addr + 0xA) != 0;
-                Type = Key.Contains("%") ? StatType.Percents : (StatType) m.Read<int>(addr + 0xB);
+                Type = Key.Contains("%") ? StatType.Percents : (StatType) m.Read<int>(addr + 0xB);
 				Flag3 = m.Read<byte>(addr + 0xF) != 0;
 
                 UserFriendlyName =

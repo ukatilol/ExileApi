@@ -41,6 +41,20 @@ namespace ExileCore.PoEMemory.MemoryObjects
             return M.Read<int>(Address + TIER_START + layer * sizeof(int));
         }
 
+        public int GetLayerByTier(int tier)
+        {
+            const int TIER_START = 0xA5;
+
+            for (int i = 0; i < 5; i++)
+            {
+                var tierRead = M.Read<int>(Address + TIER_START + i * sizeof(int));
+                if (tierRead == tier)
+                    return i;
+            }
+
+            return -1;
+        }
+
         public bool IsUniqueMap
         {
             get

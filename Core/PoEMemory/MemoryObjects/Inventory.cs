@@ -246,8 +246,10 @@ namespace ExileCore.PoEMemory.MemoryObjects
                     break;
                 case 0x01:
                     // Normal Stash and Quad Stash is same.
-                    if (TotalBoxesInInventoryRow == 24) _cacheInventoryType = InventoryType.QuadStash;
-                    _cacheInventoryType = InventoryType.NormalStash;
+                    if (TotalBoxesInInventoryRow == 24)
+                        _cacheInventoryType = InventoryType.QuadStash;
+                    else
+                        _cacheInventoryType = InventoryType.NormalStash;
                     break;
                 case 0x23:
                     _cacheInventoryType = InventoryType.DelveStash;
@@ -255,11 +257,14 @@ namespace ExileCore.PoEMemory.MemoryObjects
                 case 0x50:
                     _cacheInventoryType = InventoryType.BlightStash;
                     break;
-                case 0x1c:
+                case 0x1C:
                     _cacheInventoryType = InventoryType.DeliriumStash;
                     break;
-                case 0xe:
+                case 0xE:
                     _cacheInventoryType = InventoryType.MetamorphStash;
+                    break;
+                case 0x9:
+                    _cacheInventoryType = InventoryType.UniqueStash;
                     break;
                 default:
                     _cacheInventoryType = InventoryType.InvalidInventory;
@@ -281,11 +286,16 @@ namespace ExileCore.PoEMemory.MemoryObjects
                 case InventoryType.EssenceStash:
                 case InventoryType.FragmentStash:
                 case InventoryType.DelveStash:
+                case InventoryType.BlightStash:
+                case InventoryType.DeliriumStash:
+                case InventoryType.MetamorphStash:
                     return AsObject<Element>().Parent;
                 case InventoryType.DivinationStash:
                     return GetObject<Element>(M.Read<long>(Address + OffsetBuffers + 0x24, 0x08));
                 case InventoryType.MapStash:
                     return AsObject<Element>().Parent.AsObject<MapStashTabElement>();
+                case InventoryType.UniqueStash:
+                    return AsObject<Element>().Parent;
                 default:
                     return null;
             }

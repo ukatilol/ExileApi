@@ -3,10 +3,12 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using ExileCore.PoEMemory.MemoryObjects;
 using ExileCore.Shared.Enums;
 using ExileCore.Shared.Helpers;
 using ExileCore.Shared.Interfaces;
 using GameOffsets;
+using GameOffsets.Native;
 using MoreLinq;
 
 namespace ExileCore.PoEMemory
@@ -46,7 +48,7 @@ namespace ExileCore.PoEMemory
 
                 ReadDictionary(fileChunkStruct.ListPtr, files);
             });
-
+            
             return files.ToDictionary();
         }
 

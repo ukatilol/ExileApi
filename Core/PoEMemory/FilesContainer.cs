@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -35,7 +36,7 @@ namespace ExileCore.PoEMemory
         private PropheciesDat prophecies;
         private Quests quests;
         private QuestStates questStates;
-        
+
         //Will be loaded on first access:
         private WorldAreas worldAreas;
 
