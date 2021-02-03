@@ -21,13 +21,13 @@ namespace GameOffsets
     [StructLayout(LayoutKind.Explicit, Pack = 1)]
     public struct LargeSmallMapElement
     {
-        [FieldOffset(0x1C0 + ElementOffsets.OffsetBuffers)]
+        [FieldOffset(0x270 + ElementOffsets.OffsetBuffers)]
         public float LargeMapShiftX;
 
-        [FieldOffset(0x1C4 + ElementOffsets.OffsetBuffers)]
+        [FieldOffset(0x274 + ElementOffsets.OffsetBuffers)]
         public float LargeMapShiftY;
 
-        [FieldOffset(0x204 + ElementOffsets.OffsetBuffers)]
+        [FieldOffset(0x2B4 + ElementOffsets.OffsetBuffers)]
         public float LargeMapZoom;
     }
 }
